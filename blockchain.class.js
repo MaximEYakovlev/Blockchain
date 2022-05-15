@@ -4,7 +4,8 @@ class Blockchain {
     }
 
     addBlock(block) {
-
+        block.lastHash = this.getLastBlock().createHash()
+        this.chain.push(Object.freeze(block))
     }
 
     isValid() {
