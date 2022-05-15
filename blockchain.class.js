@@ -9,7 +9,15 @@ class Blockchain {
     }
 
     isValid() {
-
+        let invalidBlock = this.chain.find((currBlock, i) => {
+            let prevBlock = this.chain[i - 1]
+            return prevBlock && prevBlock.createHash() != currBlock.lastHash
+        })
+        if (invalidBlock) {
+            return false
+        } else {
+            return true
+        }
     }
 
     getLastBlock() {
