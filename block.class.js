@@ -1,3 +1,5 @@
+const { sha256 } = require('./sha256')
+
 class Block {
     constructor(time = Date.now(), data = {}) {
         this.time = time
@@ -19,3 +21,5 @@ class Block {
         }
     }
 }
+
+exports.Block = Block

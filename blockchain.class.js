@@ -24,3 +24,5 @@ class Blockchain {
         return this.chain[this.chain.length - 1]
     }
 }
+
+exports.Blockchain = Blockchain
