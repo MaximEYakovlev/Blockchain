@@ -6,6 +6,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blockchain</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header>Blockchain</header>
+    <div class="col-1400">
+      <section class="width-25">
+        <h2>Blocks</h2>
+        <div class="card">Block information</div>
+      </section>
+      <section class="col">
+        <div class="col-850">
+          <section>
+            <h2>Transactions</h2>
+            <div class="mb-16">
+              <select name="from" id="from" class="mr-16">
+                <option value="" disabled>from</option>
+                <option value="">Maxim</option>
+                <option value="">Eugene</option>
+                <option value="">Vera</option>
+              </select>
+              <select name="to" id="to">
+                <option value="" disabled>to</option>
+                <option value="">Maxim</option>
+                <option value="">Eugene</option>
+                <option value="">Vera</option>
+              </select>
+            </div>
+            <div>
+              <input
+                type="number"
+                min="1"
+                placeholder="amount"
+                id="amount"
+                class="mr-16"
+              />
+              <button>send</button>
+            </div>
+          </section>
+          <section>
+            <h2>Nodes</h2>
+            <div class="row mb-16">
+              <div class="play-btn"></div>
+              Node 0 - Maxim
+            </div>
+            <div class="row">
+              <div class="play-btn"></div>
+              Node 1 - Eugene
+            </div>
+          </section>
+        </div>
+        <div class="col-850 fill-rest">
+          <section>
+            <h2>Transactions</h2>
+            <div class="card mb-16">Maxim ➔ Eugene $5</div>
+            <div class="card">Eugene ➔ Vera $4</div>
+          </section>
+          <section>
+            <h2>Data</h2>
+            <canvas id="myChart"></canvas>
+          </section>
+          <section>
+            <h2>Logs</h2>
+            <div id="logs">
+              <code> <i>06:00:</i> Node 0 has mined the block! </code>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+    <script>
+      const ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Maxim", "Vera", "Eugene", "Clara", "Stepan", "Nikolay"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
