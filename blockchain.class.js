@@ -5,6 +5,7 @@ class Blockchain {
 
   addBlock(block) {
     block.lastHash = this.getLastBlock().createHash();
+    block.mine();
     this.chain.push(Object.freeze(block));
   }
 
