@@ -47,11 +47,11 @@
           <section>
             <h2>Nodes</h2>
             <div class="row mb-16">
-              <div class="play-btn"></div>
+              <div class="play-btn" id="n0" onclick="startNode0()"></div>
               Node 0 - Maxim
             </div>
             <div class="row">
-              <div class="play-btn"></div>
+              <div class="play-btn" id="n1" onclick="startNode1()"></div>
               Node 1 - Eugene
             </div>
           </section>
@@ -75,6 +75,8 @@
         </div>
       </section>
     </div>
+    <script src="mining-node.class.js"></script>
+    <script src="script.js"></script>
     <script>
       const ctx = document.getElementById("myChart").getContext("2d");
       const myChart = new Chart(ctx, {
