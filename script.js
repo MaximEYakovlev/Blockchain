@@ -1,14 +1,17 @@
-let node0 = new MiningNode();
-let node1 = new MiningNode();
+let node0 = new MiningNode(0);
+let node1 = new MiningNode(1);
+let blockchain = new Blockchain();
 
 function startNode0() {
+  log("Toggle Node 0");
   n0.classList.toggle("pause-btn");
-  //node0.toggle();
+  node0.toggle();
 }
 
 function startNode1() {
+  log("Toggle Node 1");
   n1.classList.toggle("pause-btn");
-  //node1.toggle();
+  node1.toggle();
 }
 
 function log(text) {

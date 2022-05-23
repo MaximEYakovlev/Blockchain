@@ -3,10 +3,16 @@ class Blockchain {
     this.chain = [];
   }
 
-  addBlock(block) {
-    block.lastHash = this.getLastBlock().createHash();
-    block.mine();
-    this.chain.push(Object.freeze(block));
+  async addBlock(block, nodeID) {
+    let lb = this.getLastBlock();
+    block.lastHash = lb ? lb.createHash() : "";
+    try {
+      await block.mine();
+      this.chain.push(Object.freeze(block));
+      log(`Node ${nodeID} found the block! (${this.chain.length} in total)`);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   isValid() {
