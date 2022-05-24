@@ -8,6 +8,7 @@ class Blockchain {
     block.lastHash = lb ? lb.createHash() : "";
     try {
       await block.mine();
+      broadcaster.notify(nodeID);
       this.chain.push(Object.freeze(block));
       log(`Node ${nodeID} found the block! (${this.chain.length} in total)`);
     } catch (e) {

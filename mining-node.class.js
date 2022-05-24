@@ -8,6 +8,12 @@ class MiningNode {
 
   constructor(id) {
     this.id = id;
+    broadcaster.subscribe((nodeID) => {
+      console.log("Message received:", nodeID);
+      if (nodeID !== this.id) {
+        this.killCurrentBlock();
+      }
+    });
   }
 
   toggle() {
