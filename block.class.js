@@ -49,6 +49,7 @@ class Block {
     entry.amount += amount;
     console.log("UPDATED TABLE", moneyTable);
     this.data.moneyTable = moneyTable;
+    updateGraphData(moneyTable);
   }
 
   mineOld() {

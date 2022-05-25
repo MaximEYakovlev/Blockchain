@@ -1,6 +1,10 @@
-let node0 = new MiningNode(0);
-let node1 = new MiningNode(1);
+let node0 = new MiningNode(0, "Maxim");
+let node1 = new MiningNode(1, "Vera");
 let blockchain = new Blockchain();
+let CHART_DATA = {
+  amounts: [0, 0, 0, 0, 0, 0],
+  labels: ["", "", "", "", "", ""],
+};
 
 function startNode0() {
   log("Toggle Node 0");
@@ -18,4 +22,12 @@ function log(text) {
   let hours = ("0" + new Date().getHours()).slice(-2);
   let minutes = ("0" + new Date().getMinutes()).slice(-2);
   logs.innerHTML += `<div class="mb-16"><code> <i>${hours}:${minutes}</i> ${text} </code></div>`;
+}
+
+function updateGraphData(moneyTable) {
+  moneyTable.forEach((entry, index) => {
+    CHART_DATA.amounts[index] = entry.amount;
+    CHART_DATA.labels[index] = entry.name;
+  });
+  myChart.update();
 }
