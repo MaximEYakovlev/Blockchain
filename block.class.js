@@ -35,16 +35,24 @@ class Block {
   resolveTransactions() {
     let transactions = this.data.transactions;
     transactions.forEach((transaction) => {
-      this.addMoney(transaction.to, transaction.amount);
+      this.addMoney(transaction.from, transaction.to, transaction.amount);
     });
   }
 
-  addMoney(receiver, amount) {
+  addMoney(sender, receiver, amount) {
     let moneyTable = this.data.moneyTable || [];
     let entry = moneyTable.find((e) => e.name == receiver);
     if (!entry) {
       entry = { name: receiver, amount: 0 };
       moneyTable.push(entry);
+    }
+    if (sender != "BlockReward") {
+      let entrySender = moneyTable.find((e) => e.name == sender);
+      if (!entrySender) {
+        entrySender = { name: receiver, amount: 0 };
+        moneyTable.push(entrySender);
+      }
+      entrySender.amount -= amount;
     }
     entry.amount += amount;
     console.log("UPDATED TABLE", moneyTable);

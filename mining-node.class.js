@@ -5,7 +5,7 @@ class MiningNode {
   constructor(id, name) {
     this.id = id;
     this.name = name;
-    this.DEFAULT_DATA = {
+    this.blockData = {
       transactions: [{ from: "BlockReward", to: this.name, amount: 5 }],
     };
     broadcaster.subscribe((nodeID) => {
@@ -13,6 +13,9 @@ class MiningNode {
       if (nodeID !== this.id) {
         this.killCurrentBlock();
       }
+    });
+    newTransaction.subscribe((transaction) => {
+      this.blockData.transactions.push(transaction);
     });
   }
 
@@ -32,7 +35,10 @@ class MiningNode {
   }
 
   async mine() {
-    this.currentBlock = new Block(Date.now(), this.DEFAULT_DATA);
+    this.blockData = {
+      transactions: [{ from: "BlockReward", to: this.name, amount: 5 }],
+    };
+    this.currentBlock = new Block(Date.now(), this.blockData);
     await blockchain.addBlock(this.currentBlock, this.id);
     if (this.isMining) {
       this.mine();

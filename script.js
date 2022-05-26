@@ -18,6 +18,15 @@ function startNode1() {
   node1.toggle();
 }
 
+function sendMoney() {
+  console.log(from.value, to.value, amount.value);
+  newTransaction.notify({
+    from: from.value,
+    to: to.value,
+    amount: +amount.value,
+  });
+}
+
 function log(text) {
   let hours = ("0" + new Date().getHours()).slice(-2);
   let minutes = ("0" + new Date().getMinutes()).slice(-2);
