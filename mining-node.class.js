@@ -8,6 +8,7 @@ class MiningNode {
     this.blockData = {
       transactions: [{ from: "BlockReward", to: this.name, amount: 5 }],
     };
+    renderCurrentTransactions(this.blockData.transactions);
     broadcaster.subscribe((nodeID) => {
       console.log("Message received:", nodeID);
       if (nodeID !== this.id) {
@@ -38,6 +39,7 @@ class MiningNode {
     this.blockData = {
       transactions: [{ from: "BlockReward", to: this.name, amount: 5 }],
     };
+    renderCurrentTransactions(this.blockData.transactions);
     this.currentBlock = new Block(Date.now(), this.blockData);
     await blockchain.addBlock(this.currentBlock, this.id);
     if (this.isMining) {

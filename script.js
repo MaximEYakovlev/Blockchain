@@ -40,3 +40,10 @@ function updateGraphData(moneyTable) {
   });
   myChart.update();
 }
+
+function renderCurrentTransactions(transactions) {
+  transactionContainer.innerHTML = "<h2>Transaktionen</h2>";
+  transactions.forEach((ta) => {
+    transactionContainer.innerHTML += `<div class="card mb-16">${ta.from} ➔ ${ta.to} $${ta.amount}</div>`;
+  });
+}
