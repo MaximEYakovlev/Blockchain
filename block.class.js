@@ -4,7 +4,7 @@ class Block {
     this.data = data;
     this.lastHash = "";
     this.nonce = 0;
-    this.difficulty = "0";
+    this.difficulty = "00";
   }
 
   createHash() {

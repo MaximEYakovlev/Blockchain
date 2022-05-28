@@ -33,16 +33,19 @@ class MiningNode {
     if (this.currentBlock) {
       this.currentBlock.kill = true;
     }
-  }
-
-  async mine() {
     this.blockData = {
       transactions: [{ from: "BlockReward", to: this.name, amount: 5 }],
     };
+  }
+
+  async mine() {
     renderCurrentTransactions(this.blockData.transactions);
     this.currentBlock = new Block(Date.now(), this.blockData);
     await blockchain.addBlock(this.currentBlock, this.id);
     if (this.isMining) {
+      this.blockData = {
+        transactions: [{ from: "BlockReward", to: this.name, amount: 5 }],
+      };
       this.mine();
     }
   }
